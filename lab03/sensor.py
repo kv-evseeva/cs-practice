@@ -4,6 +4,7 @@ n = int(input("Введите количество записей: "))
 err_count = 0
 exceeding_count = 0
 max_record, first_found = 0, False
+total_sum = 0
 
 for i in range(n):
     record = input(f"Введите {i + 1}-ю запись: ")
@@ -17,9 +18,11 @@ for i in range(n):
         max_record, first_found = record, True
     if record > max_record:
         max_record = record
+    total_sum += record
 
 print("-" * 30)
 print(f"Всего записей: {n}")
 print(f"Количество ошибок: {err_count}")
 print(f"Количество превышений порога: {exceeding_count}")
-print(f"Максимальное показание: {max_record}")
+print(f"Максимальное показание: {max_record:.1f}")
+print(f"Среднее показание: {total_sum / (n - err_count):.1f}")

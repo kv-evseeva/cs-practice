@@ -17,3 +17,12 @@ def average(scores: list[float]) -> float:
         scores_sum += score
         count += 1
     return float(f"{scores_sum / count:.2f}")
+
+
+def ranking(names: list[str], scores: list[float]) -> list[str]:
+    if len(names) == 0:
+        return []
+    tupled_list = list(zip(names, scores))
+    tupled_list.sort(key=lambda item: item[1], reverse=True)
+    rank = [item[0] for item in tupled_list]
+    return rank

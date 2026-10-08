@@ -1,3 +1,8 @@
+'''
+Принимает список имен участников и список их результатов.
+Возвращает имя участника с наибольшим результатом;
+при равенстве — тот, кто раньше в списке.
+'''
 def winner(names: list[str], scores: list[float]) -> str:
     if not names:
         return ""
@@ -9,6 +14,10 @@ def winner(names: list[str], scores: list[float]) -> str:
     return winner_name
 
 
+'''
+Принимает список результатов участников.
+Возвращает средний результат, округлённый до сотых.
+'''
 def average(scores: list[float]) -> float:
     if not scores:
         return float(f"{0:.2f}")
@@ -19,6 +28,11 @@ def average(scores: list[float]) -> float:
     return float(f"{scores_sum / count:.2f}")
 
 
+'''
+Принимает список имен участников и список их результатов.
+Возвращает список имен по убыванию результата;
+при равенстве — в исходном порядке.
+'''
 def ranking(names: list[str], scores: list[float]) -> list[str]:
     if not names:
         return []
@@ -28,6 +42,11 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
     return rank
 
 
+'''
+Принимает список имен участников и список их результатов.
+Возвращает имена тех, чей результат строго выше среднего;
+порядок — как в списке.
+'''
 def above_average(names: list[str], scores: list[float]) -> list[str]:
     avg_score = average(scores)
     names_above_avg = [names[i] for i in range(len(names)) if scores[i] > avg_score]

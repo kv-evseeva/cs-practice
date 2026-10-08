@@ -26,3 +26,9 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
     tupled_list.sort(key=lambda item: item[1], reverse=True)
     rank = [item[0] for item in tupled_list]
     return rank
+
+
+def above_average(names: list[str], scores: list[float]) -> list[str]:
+    avg_score = average(scores)
+    names_above_avg = [names[i] for i in range(len(names)) if scores[i] > avg_score]
+    return names_above_avg

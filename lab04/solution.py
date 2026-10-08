@@ -1,5 +1,5 @@
 def winner(names: list[str], scores: list[float]) -> str:
-    if len(names) == 0:
+    if not names:
         return ""
     winner_name, max_score = names[0], scores[0]
     for i in range(1, len(names)):
@@ -10,7 +10,7 @@ def winner(names: list[str], scores: list[float]) -> str:
 
 
 def average(scores: list[float]) -> float:
-    if len(scores) == 0:
+    if not scores:
         return float(f"{0:.2f}")
     scores_sum, count = 0.0, 0
     for score in scores:
@@ -20,7 +20,7 @@ def average(scores: list[float]) -> float:
 
 
 def ranking(names: list[str], scores: list[float]) -> list[str]:
-    if len(names) == 0:
+    if not names:
         return []
     tupled_list = list(zip(names, scores))
     tupled_list.sort(key=lambda item: item[1], reverse=True)

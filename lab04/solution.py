@@ -60,3 +60,4 @@ if __name__ == "__main__":
     print("Средний результат:", average(scores))
     print("Рейтинг по убыванию:", ranking(names, scores))
     print("Результат выше среднего:", above_average(names, scores))
+    print(average([]))

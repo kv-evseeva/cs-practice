@@ -51,7 +51,13 @@ def read_rows(lines: list[str]) -> list[dict]:
 Возвращает словарь, где ключ - тип записи, значение - число записей с данным типом.
 '''
 def count_types(rows: list[dict]) -> dict:
-    pass
+    counts = dict()
+    for row in rows:
+        curr_key = row['тип']
+        if counts.get(curr_key) is None:
+            counts[curr_key] = 0
+        counts[curr_key] += 1
+    return counts
 
 
 '''

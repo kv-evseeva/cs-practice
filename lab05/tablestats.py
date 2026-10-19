@@ -22,6 +22,17 @@ def parse_line(line: str) -> list:
     if count_quotes % 2 != 0:  # некорректная строка (например, '12,"34')
         return  # возвращается None
     return fields
+
+
+'''
+Принимает число и количество цифр после запятой (по умолчанию 0).
+Возвращает данное число, округленное до требуемого количества цифр
+после запятой по математическим правилам.
+'''
+def math_round(number: float, ndigits: int = 0) -> int | float:
+    if not ndigits:
+        return int(number + 0.5)
+    return int(number * 10**ndigits + 0.5) / 10**ndigits
 # --------------------END HELPER FUNCTIONS--------------------
 
 
@@ -68,7 +79,15 @@ def count_types(rows: list[dict]) -> dict:
 Если записей данного типа нет, функция возвращает 0.0.
 '''
 def total_minutes(rows: list[dict], kind: str) -> float:
-    pass
+    total_mins = 0.0
+    for row in rows:
+        if row['тип'] == kind:
+            curr_mins = row['минуты'].replace(',', '.', 1)
+            try:
+                total_mins += float(curr_mins)
+            except ValueError:
+                pass
+    return math_round(total_mins, 1)
 
 
 '''

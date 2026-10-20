@@ -96,8 +96,37 @@ def total_minutes(rows: list[dict], kind: str) -> float:
 Строки разделяются символом переноса строки.
 '''
 def to_csv(counts: dict) -> str:
-    result = ["тип,количество"]
+    result = ['тип,количество']
     counts = dict(sorted(counts.items()))
     for type, count in counts.items():
-        result.append(f"{type},{count}")
-    return "\n".join(result)
+        result.append(f'{type},{count}')
+    return '\n'.join(result)
+
+
+if __name__ == '__main__':
+    lines = [
+        '\n',
+        '          \n',
+        'дата,тип,минуты\n',
+        '2026-03-01,запуск,1.5\n',
+        '2026-03-01,проверка,3,4\n',
+        '2026-03-01,запуск,abc\n',
+        '2026-03-01,ошибка,"0.4\n',
+        '2026-03-02,проверка,"2,5"\n',
+        '2026-03-02,ошибка,0.4\n',
+        '2026-03-02,запуск,"1,2"\n',
+        '  2026-03-03, проверка ,  2.5 \n',
+        '2026-03-03,запуск,1.2\n'
+        ]
+    rows = read_rows(lines)
+    print('-> Считанные строки:')
+    for row in rows:
+        print(row)
+    counts = count_types(rows)
+    print('-> Количество записей каждого типа:')
+    print(counts)
+    print('-> Суммарная длительность записей одного типа:')
+    print('запуск:', total_minutes(rows, 'запуск'))
+    print('выгрузка:', total_minutes(rows, 'выгрузка'))
+    print('-> Итоговая сводка:')
+    print(to_csv(counts))

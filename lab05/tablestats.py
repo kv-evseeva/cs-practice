@@ -96,4 +96,8 @@ def total_minutes(rows: list[dict], kind: str) -> float:
 Строки разделяются символом переноса строки.
 '''
 def to_csv(counts: dict) -> str:
-    pass
+    result = ["тип,количество"]
+    counts = dict(sorted(counts.items()))
+    for type, count in counts.items():
+        result.append(f"{type},{count}")
+    return "\n".join(result)

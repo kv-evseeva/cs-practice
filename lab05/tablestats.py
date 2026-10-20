@@ -100,7 +100,7 @@ def to_csv(counts: dict) -> str:
     counts = dict(sorted(counts.items()))
     for type, count in counts.items():
         result.append(f'{type},{count}')
-    return '\n'.join(result)
+    return '\n'.join(result) + '\n'
 
 
 if __name__ == '__main__':
@@ -128,5 +128,7 @@ if __name__ == '__main__':
     print('-> Суммарная длительность записей одного типа:')
     print('запуск:', total_minutes(rows, 'запуск'))
     print('выгрузка:', total_minutes(rows, 'выгрузка'))
+    print('-> Итоговая сводка (пустая):')
+    print(to_csv({}))
     print('-> Итоговая сводка:')
     print(to_csv(counts))

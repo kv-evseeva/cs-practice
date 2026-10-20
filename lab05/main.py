@@ -6,7 +6,7 @@ try:
     with open(table_path, 'r', encoding='utf-8') as table:
         rows = read_rows(table)
 except FileNotFoundError:
-    print("Данной таблицы не существует")
+    print('Данной таблицы не существует')
 else:
     print('Число прочитанных записей:', len(rows))
     counts = count_types(rows)

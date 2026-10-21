@@ -27,3 +27,13 @@ def unique_sorted(values: list) -> list:
 def common(first: list, second: list) -> list:
     common_values = sorted(set(first) & set(second))
     return common_values
+
+
+'''
+Принимает два списка со значениями.
+Возвращает список значений из первого списка, которых нет во втором
+(в порядке возрастания).
+'''
+def only_in_first(first: list, second: list) -> list:
+    only_first = sorted(set(first) - set(second))
+    return only_first

@@ -17,3 +17,13 @@ def count_items(values: list) -> dict:
 def unique_sorted(values: list) -> list:
     unique_values = sorted(set(values))
     return unique_values
+
+
+'''
+Принимает два списка со значениями.
+Возвращает список значений, которые встречаются в обоих списках
+(в порядке возрастания).
+'''
+def common(first: list, second: list) -> list:
+    common_values = sorted(set(first) & set(second))
+    return common_values
